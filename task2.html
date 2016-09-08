@@ -1,16 +1,19 @@
 <script type="text/javascript">
 
-var string = {
-  pluralize: function(myString) {
-    if (myString.charAt(myString.length-1) == "y") {
-      return myString.substring(0,myString.length-1) + "ies";
-    } else {
-      return myString + "s";
-    }
+function Book({title: myTitle, quantity: myQuantity, price: myPrice}) {
+  this.title = myTitle;
+  this.quantity = myQuantity;
+  this.price = myPrice;
+  this.getSubtotal = function() {
+    return this.price * this.quantity;
   }
-};
+}
 
-console.log(string.pluralize('baby')); // returns babies
-console.log(string.pluralize('cat')); // returns cats
+var oojsBook = new Book({ title: 'Object Oriented JavaScript', quantity: 2, price: 10 });
+
+console.log(oojsBook.title); // Object Oriented JavaScript
+console.log(oojsBook.quantity); // 2
+console.log(oojsBook.price); // 10
+console.log(oojsBook.getSubtotal()); // 20
 
 </script>
