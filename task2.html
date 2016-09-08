@@ -22,16 +22,14 @@ var book3 = new Book({ title: 'PHP Object Oriented Solutions', quantity: 1, pric
 var book4 = new Book({ title: 'Head First Java', quantity: 5, price: 20 });
 
 function ShoppingCart(myBooks) {
-  this.books = myBooks;
+  this.items = myBooks;
   this.add = function(myBook) {
-    this.books.push(myBook);
+    this.items.push(myBook);
   }
   this.getTotal = function() {
-    var total = 0;
-    this.books.forEach(function(book) {
-      total += book.getSubtotal();
-    })
-    return total;
+    return this.items.reduce(function(total, myItems) {
+      return total + myItems.getSubtotal();
+    }, 0);
   }
 }
 
