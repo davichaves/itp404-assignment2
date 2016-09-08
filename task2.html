@@ -16,4 +16,29 @@ console.log(oojsBook.quantity); // 2
 console.log(oojsBook.price); // 10
 console.log(oojsBook.getSubtotal()); // 20
 
+var book1 = new Book({ title: 'Object Oriented JavaScript', quantity: 1, price: 10 });
+var book2 = new Book({ title: 'JavaScript Web Applications', quantity: 2, price: 15 });
+var book3 = new Book({ title: 'PHP Object Oriented Solutions', quantity: 1, price: 20 });
+var book4 = new Book({ title: 'Head First Java', quantity: 5, price: 20 });
+
+function ShoppingCart(myBooks) {
+  this.books = myBooks;
+  this.add = function(myBook) {
+    this.books.push(myBook);
+  }
+  this.getTotal = function() {
+    var total = 0;
+    this.books.forEach(function(book) {
+      total += book.getSubtotal();
+    })
+    return total;
+  }
+}
+
+var cart = new ShoppingCart([book1, book2]);
+cart.add(book3);
+cart.add(book4);
+var subtotal = cart.getTotal();
+console.log(subtotal); // 160
+
 </script>
